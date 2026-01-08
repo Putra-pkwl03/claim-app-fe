@@ -18,14 +18,24 @@ export async function getSites() {
 }
 
 // Get a single site by ID
-export async function getSite(id: string) {
+// export async function getSite(id: string) {
+//   try {
+//     const res = await API.get(`/sites/${id}`);
+//     return res.data;
+//   } catch (err: any) {
+//     throw new Error(err.response?.data?.message || "Failed to fetch site details");
+//   }
+// }
+
+export async function getSite(id: number | string) {
   try {
-    const res = await API.get(`/sites/${id}`);
+    const res = await API.get(`/sites/${id.toString()}`);
     return res.data;
   } catch (err: any) {
     throw new Error(err.response?.data?.message || "Failed to fetch site details");
   }
 }
+
 
 // Type payload sesuai BE
 export interface SitePayload {

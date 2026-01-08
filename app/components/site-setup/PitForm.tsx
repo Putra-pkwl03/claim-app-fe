@@ -131,7 +131,8 @@ export default function PitForm({
         if (currentPit) importedPits.push(currentPit);
 
         currentPit = {
-          site_id: siteId,
+          // site_id: siteId,
+           site_id: siteId!,
           name: firstCell.trim(),
           description: "",
           utm_zone: "50S",
