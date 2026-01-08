@@ -86,6 +86,37 @@ export default function DataList({ sites }: DataListProps) {
                 </div>
 
                 {expandedPits.includes(pit.id) && (
+  <div className="mt-2 flex flex-col gap-1 text-gray-600 text-sm">
+    <div>Volume PIT: {pit.luas_m2 ?? 0} m²</div>
+    <div>Material: {pit.jenis_material || "-"}</div>
+    <div>Status: {pit.status_aktif ? "Aktif" : "Tidak Aktif"}</div>
+    <div>
+      <MapPinIcon className="w-4 h-4 inline-block mr-1" /> Koordinat PIT:
+      <div className="ml-5 mt-1">
+        {formatCoords(pit.coordinates).map((c, i) => (
+          <div key={i}>{c}</div>
+        ))}
+      </div>
+    </div>
+
+    {/* Blocks List */}
+    {(pit.blocks ?? []).length > 0 && (
+      <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
+        {(pit.blocks ?? []).map(block => (
+          <div key={block.id}>
+            <div>
+              <b>Block:</b> {block.name} - {block.status || "-"}
+            </div>
+            <div>Volume: {block.volume ?? 0}</div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+)}
+
+
+                {/* {expandedPits.includes(pit.id) && (
                   <div className="mt-2 flex flex-col gap-1 text-gray-600 text-sm">
                     <div>Volume PIT: {pit.luas_m2 ?? 0} m²</div>
                     <div>Material: {pit.jenis_material || "-"}</div>
@@ -99,27 +130,20 @@ export default function DataList({ sites }: DataListProps) {
                       </div>
                     </div>
 
-                   {expandedPits.includes(pit.id) && (
-                      <div className="mt-2 flex flex-col gap-1 text-gray-600 text-sm">
-                        {(() => {
-                          const blocks = pit.blocks ?? [];
-                          return blocks.length > 0 && (
-                            <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
-                              {blocks.map(block => (
-                                <div key={block.id}>
-                                  <div>
-                                    <b>Block:</b> {block.name} - {block.status || "-"}
-                                  </div>
-                                  <div>Volume: {block.volume ?? 0}</div>
-                                </div>
-                              ))}
+                    {(pit.blocks?.length ?? 0) > 0 && (
+                      <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
+                        {pit.blocks.map(block => (
+                          <div key={block.id}>
+                            <div>
+                              <b>Block:</b> {block.name} - {block.status || "-"}
                             </div>
-                          );
-                        })()}
+                            <div>Volume: {block.volume ?? 0}</div>
+                          </div>
+                        ))}
                       </div>
                     )}
                   </div>
-                )}
+                )} */}
               </div>
             ))}
         </div>
