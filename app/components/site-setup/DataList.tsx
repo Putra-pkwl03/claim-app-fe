@@ -100,20 +100,25 @@ export default function DataList({ sites }: DataListProps) {
     </div>
 
     {/* Blocks List */}
-    {(pit.blocks ?? []).length > 0 && (
-      <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
-        {(pit.blocks ?? []).map(block => (
-          <div key={block.id}>
-            <div>
-              <b>Block:</b> {block.name} - {block.status || "-"}
+    {(() => {
+      const blocks: Block[] = pit.blocks ?? []; // pakai default array
+      if (blocks.length === 0) return null;
+      return (
+        <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
+          {blocks.map((block) => (
+            <div key={block.id}>
+              <div>
+                <b>Block:</b> {block.name} - {block.status || "-"}
+              </div>
+              <div>Volume: {block.volume ?? 0}</div>
             </div>
-            <div>Volume: {block.volume ?? 0}</div>
-          </div>
-        ))}
-      </div>
-    )}
+          ))}
+        </div>
+      );
+    })()}
   </div>
 )}
+
 
 
                 {/* {expandedPits.includes(pit.id) && (
