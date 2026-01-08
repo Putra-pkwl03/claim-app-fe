@@ -190,9 +190,10 @@ export default function ManagerialClaimPage() {
         <SkeletonClaimTable rows={5} /> 
       ) : (
         <ManagerialClaimTable
-  claims={claims}
-  setClaims={setClaims}
-/>
+            claims={claims}
+            setClaims={setClaims} onToast={function (value: React.SetStateAction<{ message: string; type: "success" | "error"; } | null>): void {
+              throw new Error("Function not implemented.");
+            } }/>
 
       )}
     </div> 
