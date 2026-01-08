@@ -97,7 +97,6 @@ export default function UserTable({ users, onDelete, onEdit }: any) {
   {selectedId && (
     <ConfirmModal
       title="Delete User?"
-      message="This action cannot be undone."
       onCancel={() => setSelectedId(null)}
       onConfirm={() => {
         onDelete(selectedId!);
