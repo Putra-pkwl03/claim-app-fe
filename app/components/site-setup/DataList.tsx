@@ -99,7 +99,7 @@ export default function DataList({ sites }: DataListProps) {
                       </div>
                     </div>
 
-                    {pit.blocks?.length > 0 && (
+                    {(pit.blocks?.length ?? 0) > 0 && (
                       <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
                         {pit.blocks.map(block => (
                           <div key={block.id}>
