@@ -86,7 +86,7 @@ useEffect(() => {
 
         {/* CONTENT */}
         <div className="animate-fade-in max-h-[486px] overflow-y-auto">
-          {active === "site" && <SiteForm siteId={siteId} />}
+       {active === "site" && <SiteForm siteId={String(siteId)} />}
           {active === "pit" && <PitForm siteId={siteId} />}
           {active === "block" && (
             <BlockForm siteId={siteId} mode="edit" />
