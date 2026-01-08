@@ -36,12 +36,13 @@ interface FormState {
 interface ClaimFormProps {
   form: FormState;
   setForm: Dispatch<SetStateAction<FormState>>;
-   sites?: any[]; 
-     pits: any[];
-  blocks: any[];
-   onSelectSite: (id: any) => void;
-  onSelectPit: (id: any) => void;
+  sites?: any[];
+  pits?: any[];
+  blocks?: any[];
+  onSelectSite?: (id: any) => void;
+  onSelectPit?: (id: any) => void;
 }
+
 
 export default function ClaimForm({ form, setForm }: ClaimFormProps) {
   const updateTotalBcm = (blocks: Block[]) => {

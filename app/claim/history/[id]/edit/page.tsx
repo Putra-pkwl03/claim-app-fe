@@ -150,7 +150,10 @@ setForm({
       <form onSubmit={handleSubmit}>
         <div className="grid lg:grid-cols-[2fr_3fr] gap-6">
            <div className="max-h-[450px] overflow-y-auto pr-2">
-          <ClaimForm form={form} setForm={setForm} />
+          <ClaimForm form={form} setForm={setForm} 
+          />
+
+          
           </div>
           <div className="h-[450px] border rounded">
             <MapView sites={sites} />
