@@ -85,27 +85,25 @@ export default function DataList({ sites }: DataListProps) {
                   )}
                 </div>
 
-                {expandedPits.includes(pit.id) && (
-  <div className="mt-2 flex flex-col gap-1 text-gray-600 text-sm">
-    <div>Volume PIT: {pit.luas_m2 ?? 0} m²</div>
-    <div>Material: {pit.jenis_material || "-"}</div>
-    <div>Status: {pit.status_aktif ? "Aktif" : "Tidak Aktif"}</div>
-    <div>
-      <MapPinIcon className="w-4 h-4 inline-block mr-1" /> Koordinat PIT:
-      <div className="ml-5 mt-1">
-        {formatCoords(pit.coordinates).map((c, i) => (
-          <div key={i}>{c}</div>
-        ))}
+                {expandedPits.includes(pit.id) && (() => {
+  const blocks: Block[] = pit.blocks ?? []; // selalu array
+  return (
+    <div className="mt-2 flex flex-col gap-1 text-gray-600 text-sm">
+      <div>Volume PIT: {pit.luas_m2 ?? 0} m²</div>
+      <div>Material: {pit.jenis_material || "-"}</div>
+      <div>Status: {pit.status_aktif ? "Aktif" : "Tidak Aktif"}</div>
+      <div>
+        <MapPinIcon className="w-4 h-4 inline-block mr-1" /> Koordinat PIT:
+        <div className="ml-5 mt-1">
+          {formatCoords(pit.coordinates).map((c, i) => (
+            <div key={i}>{c}</div>
+          ))}
+        </div>
       </div>
-    </div>
 
-    {/* Blocks List */}
-    {(() => {
-      const blocks: Block[] = pit.blocks ?? []; // pakai default array
-      if (blocks.length === 0) return null;
-      return (
+      {blocks.length > 0 && (
         <div className="mt-2 border-l-2 pl-2 ml-2 text-xs space-y-1">
-          {blocks.map((block) => (
+          {blocks.map(block => (
             <div key={block.id}>
               <div>
                 <b>Block:</b> {block.name} - {block.status || "-"}
@@ -114,10 +112,10 @@ export default function DataList({ sites }: DataListProps) {
             </div>
           ))}
         </div>
-      );
-    })()}
-  </div>
-)}
+      )}
+    </div>
+  );
+})()}
 
 
 
